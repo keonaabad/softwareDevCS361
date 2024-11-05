@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microservices UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #image-display {
+            margin-top: 20px;
+            max-width: 300px;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Microservices UI</h1>
+    <button id="generate-button">Generate Random Image</button>
+    <p id="status-message"></p>
+    <img id="image-display" src="" alt="Your image will appear here">
+
+    <script>
+        const generateButton = document.getElementById('generate-button');
+        const statusMessage = document.getElementById('status-message');
+        const imageDisplay = document.getElementById('image-display');
+    
+        generateButton.addEventListener('click', () => {
+            // Step 1: Trigger the PRNG Service
+            fetch('http://localhost:3000/trigger-prng')
+                .then(response => response.text())
+                .then(randomNumber => {
+                    statusMessage.textContent = `Generated Random Number: ${randomNumber}`;
+    
+                    // Step 2: Pass the random number to the Image Service
+                    fetch('http://localhost:3000/image-service', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body: randomNumber,
+                    })
+                        .then(response => response.text())
+                        .then(imagePath => {
+                            // Step 3: Display the selected image
+                            imageDisplay.src = imagePath;
+                            statusMessage.textContent = `Displaying image: ${imagePath}`;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching image:', error);
+                            statusMessage.textContent = 'Error fetching image';
+                        });
+                })
+                .catch(error => {
+                    console.error('Error triggering PRNG Service:', error);
+                    statusMessage.textContent = 'Error triggering PRNG Service';
+                });
+        });
+    </script>
+    
+</body>
+</html>
