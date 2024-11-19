@@ -45,4 +45,4 @@ The Client Program sends an HTTP GET request with the search term to the /search
 The Microservice processes the request, filters the dataset, and prepares the response.
 The Microservice sends the JSON response back to the Client Program.
 
-![MICROSERVICE A](C:\Users\Keona\Desktop\Software Eng 1\microservice-a\Screenshot 2024-11-18 181805.png)
+![MICROSERVICE](microservice-a/Screenshot 2024-11-18 181805.png)
