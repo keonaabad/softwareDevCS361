@@ -46,3 +46,4 @@ The Microservice processes the request, filters the dataset, and prepares the re
 The Microservice sends the JSON response back to the Client Program.
 
 ![MICROSERVICE](Screenshot 2024-11-18 181805.png)
+
