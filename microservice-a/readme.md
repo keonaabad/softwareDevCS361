@@ -35,6 +35,7 @@ If the query is ap, the response will look like this:
     }
 ]
 
+
 If no matches are found:
 []
 
@@ -46,3 +47,23 @@ The Microservice processes the request, filters the dataset, and prepares the re
 The Microservice sends the JSON response back to the Client Program.
 
 ![Microservice A](Sequence.png)
+
+Important Notes for Integration
+Access the Microservice:
+
+Clone the repository:
+git clone <repository_url>
+
+Navigate to the project directory and start the server:
+python main.py
+The microservice will run locally at http://127.0.0.1:5000.
+
+Key Details:
+Use the /search endpoint for all requests.
+Ensure the query parameter is correctly formatted.
+
+Assistance:
+If issues arise, contact [your contact information].
+I am available Monday–Friday, 10 AM–6 PM.
+Please report any issues by [specific date].
+
