@@ -20,7 +20,7 @@ def search():
     query = request.args.get('query', '').lower()
     if not query:
         return jsonify([])  # Return an empty list if no query is provided
-    results = [item for item in data if query in item['name'].lower()] 
+    results = [item for item in data if query in item['name'].lower()]
     return jsonify(results)
 
 if __name__ == '__main__':
