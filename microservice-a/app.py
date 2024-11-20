@@ -19,7 +19,7 @@ def home():
 def search():
     query = request.args.get('query', '').lower()
     if not query:
-        return jsonify([])  # Return an empty list if no query is provided
+        return jsonify([]) 
     results = [item for item in data if query in item['name'].lower()]
     return jsonify(results)
 
